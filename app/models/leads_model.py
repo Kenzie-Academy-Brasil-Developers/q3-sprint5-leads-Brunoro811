@@ -27,7 +27,6 @@ class LeadsModel(db.Model):
     @staticmethod
     def serializer(leads: list["LeadsModel"])->list[dict]:
         serializer = [{
-            'id': lead.id,
             'name': lead.name,
             'email': lead.email ,
             'prhone': lead.phone ,

@@ -76,6 +76,8 @@ def delete_lead():
         current_app.db.session.commit()
 
         return "", HTTPStatus.NO_CONTENT
+    except AttributeError:
+        return {'error': "should be an email"}, HTTPStatus.NOT_FOUND
     except UnmappedInstanceError:
         return {'error': "Not Found"}, HTTPStatus.NOT_FOUND    
     except Exception as e:

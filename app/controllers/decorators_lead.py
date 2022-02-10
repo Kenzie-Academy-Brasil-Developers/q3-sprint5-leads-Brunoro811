@@ -42,7 +42,7 @@ def validate_values(func):
 
             if(data.get('phone')):
                 phone = data['phone']
-                regex_phone = "^\([1-9]{2}\)(?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$"
+                regex_phone = "^\([1-9]{2}\)(?:[2-8]|9[0-9])[0-9]{3}\-[0-9]{4}$"
                 if not match(regex_phone,phone):
                     return {
                         "error": "number's format incorrect or invalid!",
@@ -74,6 +74,8 @@ def verify_all_types_string(func):
             if(values_error):
                 raise TypeError                
             return func()
+        except AttributeError:
+            return {'error': "should be an email"}, HTTPStatus.NOT_FOUND
         except TypeError:
             return{
                 'error': 'all values must be str',
