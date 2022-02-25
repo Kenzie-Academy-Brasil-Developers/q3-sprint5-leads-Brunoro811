@@ -13,27 +13,46 @@
     "phone": "(41)90000-0000"
 }  
   ```
+   #### Modelo de resposta:
+   os campos creation_date, last_visit e visits são preenchidos automaticamente.
+  ```bash
+ {
+    "name": "John Doe",
+    "email": "john@email.com",
+    "phone": "(41)90000-0000",
+    "creation_date": "Fri, 10 Sep 2021 17:53:25 GMT",
+    "last_visit": "Fri, 10 Sep 2021 17:53:25 GMT",
+    "visits": 1
+}  
+  ```
+### GET /leads 
+  A rota busca todos os LEADS por ordem de visitas, do maior para o menor.
+  #### Modelo de requisição:
+  ```GET - localhost:5000/leads``` sem body.
+
+
+### PATH /leads 
+  A cada requisição o campo visits acresceta 1 automaticamente.
+  A cada requisição o campo last_visit é atualizado automaticamente.
   
+  O email do Lead é utilizado para encontrar o registro a ser atualizado.
+  #### Modelo de requisição:
+  ```bash
+ {
+    "email": "john@email.com"
+}  
+  ```
+  #### Modelo de resposta é vazio.
 
 
-
-
-
-
-
-
-| Critérios | Pts. |
-|---|---|
-| Utilizar **SQLAlchemy**, **Dataclass**, **Blueprint**, **Migrations** e **Padrão Flask Factory** corretamente. | 1 |
-| [GET] **/leads** - Rota funcionando e ordenada de acordo com o enunciado. | 1 |
-| [GET] **/leads** - [ERRO] Nenhum dado encontrado. | 0.5 |
-| [POST] **/leads** - Rota funcionando de acordo com o enunciado. | 1 |
-| [POST] **/leads** - [ERRO] E-mail e telefone únicos. | 0.5 |
-| [POST] **/leads** - [ERRO] Telefone obrigatoriamente no formato (xx)xxxxx-xxxx. | 0.5 |
-| [PATCH] **/leads** - Rota funcionando de acordo com o enunciado. | 2 |
-| [PATCH] **/leads** - [ERRO] - Corpo da requisição obrigatoriamente apenas com email e deve ser uma string; | 0.5 |
-| [PATCH] **/leads** - [ERRO] - Nenhum dado encontrado. | 0.5 |
-| [DELETE] **/leads** - Rota funcionando de acordo com o enunciado. | 1 |
-| [DELETE] **/leads** - [ERRO] - Corpo da requisição obrigatoriamente apenas com email e deve ser uma string; | 0.5 |
-| [DELETE] **/leads** - [ERRO] - Nenhum dado encontrado. | 0.5 |
-| Arquivos **requirements.txt**, **.env**, **.env.example** e **.gitignore** (**venv** e **.env** adicionados) | 0.5 |
+### DELETE /leads 
+  A rota deleta um Lead específico. O email do Lead deve ser utilizado para encontrar o registro a ser deletado.
+  
+  O email do Lead é utilizado para encontrar o registro a ser atualizado.
+  #### Modelo de requisição:
+  ```bash
+ {
+    "email": "john@email.com"
+}  
+  ```
+   #### Modelo de resposta é vazio.
