@@ -1,6 +1,27 @@
 # Leads
 
 
+
+## Enpoints
+### POST /leads 
+  A rota deve é capaz de registrar um novo Lead no banco de dados.
+  #### Modelo de requisição:
+  ```bash
+  {
+    "name": "John Doe",
+    "email": "john@email.com",
+    "phone": "(41)90000-0000"
+}  
+  ```
+  
+
+
+
+
+
+
+
+
 | Critérios | Pts. |
 |---|---|
 | Utilizar **SQLAlchemy**, **Dataclass**, **Blueprint**, **Migrations** e **Padrão Flask Factory** corretamente. | 1 |
